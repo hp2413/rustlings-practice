@@ -1,3 +1,5 @@
 Cargo.lock
 target/
 .vscode/
+# Personal progress tracker — each learner gets their own, so it is not shared.
+.rustlings-state.txt
