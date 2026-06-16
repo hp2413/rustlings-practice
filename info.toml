@@ -1303,6 +1303,24 @@ Once `next` exists, every adapter (`zip`, `map`, `filter`, `skip`, `sum`, ...)
 works automatically — the standard library builds them all on top of `next`.
 https://doc.rust-lang.org/book/ch13-02-iterators.html#creating-our-own-iterators-with-the-iterator-trait"""
 
+# QUIZ 4 (easy)
+
+[[exercises]]
+name = "quiz4"
+dir = "quizzes"
+hint = """
+Easy difficulty — Lifetimes + Iterators.
+
+The signature won't compile as written: `&[&str]` has TWO input lifetimes, so
+the compiler can't elide which one the returned `&str` comes from. Annotate the
+element type and the return value with the same lifetime, e.g.
+`fn longest_word<'a>(words: &[&'a str]) -> &'a str`.
+
+For the body, reach for iterator methods:
+`words.iter().copied().max_by_key(|w| w.len()).unwrap_or("")`.
+`max_by_key` returns an `Option`, and `unwrap_or("")` handles the empty slice.
+https://doc.rust-lang.org/book/ch10-03-lifetime-syntax.html"""
+
 # SMART POINTERS
 
 [[exercises]]
@@ -1688,6 +1706,27 @@ dir = "23_conversions"
 hint = """
 Add `AsRef<str>` or `AsMut<u32>` as a trait bound to the functions."""
 
+# QUIZ 5 (medium)
+
+[[exercises]]
+name = "quiz5"
+dir = "quizzes"
+hint = """
+Medium difficulty — Smart pointers (Arc) + Threads (mpsc) + Conversions (parse).
+
+Wrap the input first: `let numbers = Arc::new(numbers);`. Make the channel with
+`let (tx, rx) = mpsc::channel();`. Then, for each index, clone BOTH the `Arc`
+(`Arc::clone(&numbers)`) and the sender (`tx.clone()`) and `move` them into a
+`thread::spawn` closure that does `numbers[i].trim().parse::<i64>().unwrap()`
+and `tx.send(...)`.
+
+`parse` is the `FromStr` trait in disguise — the `::<i64>` (or a `let x: i64`)
+tells it the target type.
+
+Finally `drop(tx);` the ORIGINAL sender so the channel closes once the worker
+clones finish, then `rx.iter().sum()` collects the total.
+https://doc.rust-lang.org/book/ch16-02-message-passing.html"""
+
 # CLOSURES
 
 [[exercises]]
@@ -1852,3 +1891,26 @@ One line covers it all:
 `#[derive(Debug, Default, PartialEq, Eq, PartialOrd, Ord, Hash)]`.
 Fields are compared in declaration order, so `major` outranks `minor`.
 https://doc.rust-lang.org/rust-by-example/trait/derive.html"""
+
+# QUIZ 6 (hard)
+
+[[exercises]]
+name = "quiz6"
+dir = "quizzes"
+hint = """
+Hard difficulty — Implementing Iterator + Closures + Patterns + Derive. It pulls
+the whole back half of the course together, so tackle it one piece at a time.
+
+1. `Stepper`: put `#[derive(Debug, Clone, PartialEq)]` above it. Then
+   `impl Iterator for Stepper { type Item = i64; fn next(&mut self) -> ... }`.
+   In `next`, return `None` when `remaining == 0`; otherwise save `current`,
+   do `self.current += self.step;`, `self.remaining -= 1;`, and `Some(saved)`.
+
+2. `Size`: `#[derive(Debug, PartialEq)]`. `classify` is a `match n { 0..=9 =>
+   Size::Small, 10..=99 => Size::Medium, _ => Size::Large }` (range patterns).
+
+3. `collect_sizes` is generic over the iterator and the closure:
+   `fn collect_sizes<I, F>(iter: I, keep: F) -> Vec<Size>
+        where I: Iterator<Item = i64>, F: Fn(i64) -> bool`
+   Body: `iter.filter(|&n| keep(n)).map(classify).collect()`.
+https://doc.rust-lang.org/book/ch13-02-iterators.html#creating-our-own-iterators-with-the-iterator-trait"""

@@ -2,13 +2,14 @@
 
 A hands-on set of small Rust exercises for learning by doing. It is built on the
 official [Rustlings](https://rustlings.rust-lang.org/) project and **extended
-with ~42 extra exercises** that fill gaps in the original curriculum (closures,
+with ~45 extra exercises** that fill gaps in the original curriculum (closures,
 pattern matching, implementing `Iterator`, smart-pointer depth, channels,
 lifetimes depth, doctests, custom errors, a capstone, formatting, flow control,
-slices, and derivable traits).
+slices, and derivable traits), plus **three extra graded quizzes**
+(easy → medium → hard) that combine the new material.
 
 Each exercise is intentionally **broken or incomplete** — you fix it until it
-compiles and its tests pass. There are now **136 exercises** in total.
+compiles and its tests pass. There are now **139 exercises** in total.
 
 Every exercise ships as four coordinated pieces:
 
@@ -112,6 +113,7 @@ hint; still stuck? Compare with `solutions/<module>/<name>.rs`.
 | 02 | `02_functions` | Functions, parameters, return values |
 | 03 | `03_if` | Conditionals |
 | ➕ | **`29_flow_control`** | `loop`/`break`-value, `while`/`while let`, `for` + labeled break |
+| 🧪 | **`quiz1`** | **Quiz** — variables + functions + `if` |
 | 04 | `04_primitive_types` | Tuples, arrays, chars, booleans |
 | ➕ | **`28_formatting`** | `{:?}`/`{:#?}`, format specifiers, `impl Display` |
 | 05 | `05_vecs` | `Vec<T>` |
@@ -122,22 +124,42 @@ hint; still stuck? Compare with `solutions/<module>/<name>.rs`.
 | 09 | `09_strings` | `String` vs `&str` |
 | 10 | `10_modules` | Modules & visibility |
 | 11 | `11_hashmaps` | `HashMap` |
+| 🧪 | **`quiz2`** | **Quiz** — strings + vecs + moves + modules + enums |
 | 12 | `12_options` | `Option<T>` |
 | 13 | `13_error_handling` | `Result`, `?`, **custom error + `From` + `Box<dyn Error>` (`errors7`)** |
 | 14 | `14_generics` | Generics, **generic struct/impl + `where` (`generics3–4`)** |
 | 15 | `15_traits` | Traits, **default methods, `Box<dyn>`, operator overload (`traits6–8`)** |
+| 🧪 | **`quiz3`** | **Quiz** — generics + traits |
 | 16 | `16_lifetimes` | Lifetimes, **struct-holding-ref + multiple lifetimes (`lifetimes4–5`)** |
 | 17 | `17_tests` | Tests, **doctests (`tests4`)** |
 | 18 | `18_iterators` | Adapters/consumers, **`iter`/`iter_mut`/`into_iter`, `fold`/`scan`, `collect`, and implementing `Iterator` (`iterators6–9`)** |
+| 🧪 | **`quiz4`** 🟢 | **Quiz (easy)** — lifetimes + iterators |
 | 19 | `19_smart_pointers` | `Box`/`Rc`/`Arc`/`Cow`, **cons-list, `Deref`, `Drop`, `RefCell`, `Weak` (`cons_list1`, `deref1`, `drop1`, `refcell1`, `weak1`)** |
 | 20 | `20_threads` | `spawn`/`Arc<Mutex>`, **`move` into thread, mpsc channels, multi-producer sum (`move_threads1`, `channels1–2`)** |
 | 21 | `21_macros` | `macro_rules!` |
 | 22 | `22_clippy` | Clippy lints |
 | 23 | `23_conversions` | `as`, `From`/`Into`, `FromStr`, `TryFrom`, `AsRef` |
+| 🧪 | **`quiz5`** 🟡 | **Quiz (medium)** — `Arc` + threads/`mpsc` channels + string parsing |
 | ➕ | **`24_closures`** | Capture modes, `Fn`/`FnMut`/`FnOnce`, HOFs, returning closures |
 | ➕ | **`25_patterns`** | Guards, ranges, destructuring, `@` bindings, `if let`/`let else`/`while let` |
 | ➕ | **`26_capstone`** | minigrep-style search/count; divide-and-conquer parallel sum |
+| ➖ | **`27_crates`** *(optional — not built)* | External crates (`rand`, `chrono`). Planned slot, intentionally omitted so the repo stays network-dependency-free — see the note below |
 | ➕ | **`31_derive`** | `Debug`/`Clone`/`Copy`/`PartialEq`; `Default`/`Ord`/`Hash` |
+| 🧪 | **`quiz6`** 🔴 | **Quiz (hard)** — implementing `Iterator` + closures + patterns + derive |
+
+> 🧪 **Quizzes (rows above).** The 🧪 rows are checkpoint quizzes, shown **in the
+> exact order you take them** — each one spans the sections right before it.
+> `quiz1`–`quiz3` come from upstream Rustlings; `quiz4`–`quiz6` are new to this
+> edition and graded **🟢 easy → 🟡 medium → 🔴 hard**. Run one with
+> `rustlings run quiz4`, or just let the watcher reach it in order.
+
+> ℹ️ **About the `27` gap.** `27_crates` was scoped in
+> [`RUSTLINGS_EXPANSION_PLAN.md`](RUSTLINGS_EXPANSION_PLAN.md) as an **optional**
+> module covering the `rand` / `chrono` external crates. It was deliberately
+> **not built** (it would pull network dependencies into every build), so there
+> is no `exercises/27_crates/` directory and no `info.toml` entries for it — the
+> `27` number is just a reserved slot. If you ever add it, it slots in right
+> here, between `26_capstone` and `28_formatting`.
 
 ---
 

@@ -404,6 +404,7 @@ rustlings list                            # new exercises appear in order
 - **Extensions to 8 existing modules:** iterators +4 (incl. `iterators9` Iterator-trait impl), traits +3 (+optional `traits9`), generics +2, smart_pointers +5 (incl. `weak1`), threads +3, lifetimes +2, tests +1, error_handling +1, macros +optional `macros5`.
 - **~45 new exercises** (Phases 1–10), each with a teaching comment header, `// TODO` scaffolding, a passing solution, an `info.toml` hint, and updated README — every concept traced back to a specific chapter of `myRustNotes.pdf`, `Rust by examples.pdf`, or `The Rust Programming Language.pdf`.
 - **Phases 9–10 close the full-audit gaps:** formatted printing/`Display`/`Debug`, loops (`loop`/`while`/`for`/labels), slices, implementing the `Iterator` trait, `Weak`/reference cycles, and derivable traits. Section 10D lists the few topics deliberately excluded (unsafe, FFI, cargo-publishing, integration tests) with reasons.
+- **3 new graded checkpoint quizzes** (beyond upstream `quiz1`–`quiz3`): `quiz4` 🟢 easy (lifetimes + iterators, after `18_iterators`), `quiz5` 🟡 medium (`Arc` + threads/`mpsc` + parsing, after `23_conversions`), `quiz6` 🔴 hard (implementing `Iterator` + closures + patterns + derive, after `31_derive`). Each ships the same four pieces as a normal exercise (broken file, solution, `info.toml` hint, README entry).
 
 ---
 

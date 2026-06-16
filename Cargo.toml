@@ -191,6 +191,8 @@ bin = [
   { name = "iterators8_sol", path = "solutions/18_iterators/iterators8.rs" },
   { name = "iterators9", path = "exercises/18_iterators/iterators9.rs" },
   { name = "iterators9_sol", path = "solutions/18_iterators/iterators9.rs" },
+  { name = "quiz4", path = "exercises/quizzes/quiz4.rs" },
+  { name = "quiz4_sol", path = "solutions/quizzes/quiz4.rs" },
   { name = "box1", path = "exercises/19_smart_pointers/box1.rs" },
   { name = "box1_sol", path = "solutions/19_smart_pointers/box1.rs" },
   { name = "rc1", path = "exercises/19_smart_pointers/rc1.rs" },
@@ -245,6 +247,8 @@ bin = [
   { name = "try_from_into_sol", path = "solutions/23_conversions/try_from_into.rs" },
   { name = "as_ref_mut", path = "exercises/23_conversions/as_ref_mut.rs" },
   { name = "as_ref_mut_sol", path = "solutions/23_conversions/as_ref_mut.rs" },
+  { name = "quiz5", path = "exercises/quizzes/quiz5.rs" },
+  { name = "quiz5_sol", path = "solutions/quizzes/quiz5.rs" },
   { name = "closures1", path = "exercises/24_closures/closures1.rs" },
   { name = "closures1_sol", path = "solutions/24_closures/closures1.rs" },
   { name = "closures2", path = "exercises/24_closures/closures2.rs" },
@@ -271,6 +275,8 @@ bin = [
   { name = "derive1_sol", path = "solutions/31_derive/derive1.rs" },
   { name = "derive2", path = "exercises/31_derive/derive2.rs" },
   { name = "derive2_sol", path = "solutions/31_derive/derive2.rs" },
+  { name = "quiz6", path = "exercises/quizzes/quiz6.rs" },
+  { name = "quiz6_sol", path = "solutions/quizzes/quiz6.rs" },
 ]
 
 [package]
