@@ -13,25 +13,25 @@ fn string(arg: String) {
 // Your task is to replace `placeholder(…)` with either `string_slice(…)`
 // or `string(…)` depending on what you think each value is.
 fn main() {
-    placeholder("blue");
+      string_slice("blue");                                   // &str literal
 
-    placeholder("red".to_string());
+      string("red".to_string());                              // .to_string() -> String
 
-    placeholder(String::from("hi"));
+      string(String::from("hi"));                             // String::from -> String
 
-    placeholder("rust is fun!".to_owned());
+      string("rust is fun!".to_owned());                      // .to_owned() on &str -> String
 
-    placeholder("nice weather".into());
+      string("nice weather".into());                          // .into() -> String (target is String)
 
-    placeholder(format!("Interpolation {}", "Station"));
+      string(format!("Interpolation {}", "Station"));         // format! -> String
 
-    // WARNING: This is byte indexing, not character indexing.
-    // Character indexing can be done using `s.chars().nth(INDEX)`.
-    placeholder(&String::from("abc")[0..1]);
+      // WARNING: This is byte indexing, not character indexing.
+      // Character indexing can be done using `s.chars().nth(INDEX)`.
+      string_slice(&String::from("abc")[0..1]);               // &String[..] -> &str
 
-    placeholder("  hello there ".trim());
+      string_slice("  hello there ".trim());                  // .trim() -> &str
 
-    placeholder("Happy Monday!".replace("Mon", "Tues"));
+      string("Happy Monday!".replace("Mon", "Tues"));         // .replace() -> String
 
-    placeholder("mY sHiFt KeY iS sTiCkY".to_lowercase());
-}
+      string("mY sHiFt KeY iS sTiCkY".to_lowercase());        // .to_lowercase() -> String
+  }

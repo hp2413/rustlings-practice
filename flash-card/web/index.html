@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rust Flash-Cards</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <h1 class="brand">🦀 Rust Flash-Cards</h1>
+    <div class="controls">
+      <label class="module-label" for="module-filter">Module
+        <select id="module-filter" class="module-filter"></select>
+      </label>
+      <div class="mode-toggle" role="group" aria-label="Deck order">
+        <button id="mode-ordered" class="mode-btn is-active" type="button" aria-pressed="true">Ordered</button>
+        <button id="mode-shuffle" class="mode-btn" type="button" aria-pressed="false">Shuffle</button>
+      </div>
+      <span id="progress" class="progress" aria-live="polite">– / –</span>
+    </div>
+  </header>
+
+  <main id="card-host" class="card-host" aria-live="polite">
+    <p id="loading" class="loading">Loading deck…</p>
+  </main>
+
+  <footer class="navbar">
+    <button id="prev" class="nav-btn" type="button" disabled>← Prev</button>
+    <p class="kbd-help">
+      <kbd>Space</kbd> answer · <kbd>H</kbd> hint · <kbd>←</kbd><kbd>→</kbd> move
+    </p>
+    <button id="next" class="nav-btn" type="button" disabled>Next →</button>
+  </footer>
+
+  <script src="app.js" defer></script>
+</body>
+</html>

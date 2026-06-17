@@ -1,0 +1,18 @@
+[package]
+name = "flash-card"
+version = "0.1.0"
+edition = "2021"
+description = "Browser-based flash-cards for learning Rust, generated from the rustlings exercises."
+# `cargo run` (no --bin) starts the web server, not the generator.
+default-run = "flash-card"
+
+# Standalone project: an empty [workspace] table marks this directory as its own
+# workspace root so the rustlings Cargo.toml at the repo root never absorbs it.
+[workspace]
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+# Generator-only deps: parse ../info.toml and stamp the deck with a timestamp.
+toml = "0.8"
+chrono = "0.4"
